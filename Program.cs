@@ -6,6 +6,13 @@ namespace DecQuintApp
 {
     class Program
     {
+        // Classes e métodos selados omaga :0
+        // Classes:
+        // Evita que a classe seja herdada, contudo,
+        // ainda é possível extender suas funcionalidades usando "extension methods
+        // Métodos:
+        // evita que um método sobreposto possa ser sobreposto novamente
+        // Só poderá ser aplicado à metodos sobrepostos
         static void Main(string[] args)
         {
             Account acc1 = new Account(1001, "Alex", 500);

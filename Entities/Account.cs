@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DecQuintApp.Entities
 {
     // Esta é a superclasse
-    internal class Account
+    class Account
     {
         public int Number { get; private set; }
         public string Holder { get; private set; }

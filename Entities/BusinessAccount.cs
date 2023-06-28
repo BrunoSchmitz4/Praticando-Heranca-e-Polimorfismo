@@ -8,7 +8,7 @@ namespace DecQuintApp.Entities
 {
     // Esta é a subclasse
     // para dizermos que ela herda de uma superclasse, colocamos o : SuperClasse
-    class BusinessAccount : Account
+    sealed class BusinessAccount : Account
     {
         public double LoanLimit { get; set; }
 
