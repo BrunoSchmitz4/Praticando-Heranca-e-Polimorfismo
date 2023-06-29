@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DecQuintApp.Entities
+﻿namespace DecQuintApp.Entities
 {
     // Esta é a subclasse
     // para dizermos que ela herda de uma superclasse, colocamos o : SuperClasse
@@ -12,10 +6,7 @@ namespace DecQuintApp.Entities
     {
         public double LoanLimit { get; set; }
 
-        public BusinessAccount()
-        {
-
-        }
+        public BusinessAccount(){}
 
         // Para reusarmos os construtores, podemos colocar o
         // ": base(variaveis locais do construtor da superclasse)"

@@ -16,10 +16,6 @@
         {
             Balance += Balance * InterestRate;
         }
-
-        // Este método pode ser selado
-        // pois é um método sobrescrito.
-        // basta colocar o "sealed" antes do modificador de acesso
         public sealed override void Withdraw(double amount)
         {
             base.Withdraw(amount);
