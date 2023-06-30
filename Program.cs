@@ -4,16 +4,166 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Collections.Generic;
 using DecQuintApp.EntitiesProd;
+using DecQuintApp.EntitiesShape;
 
 namespace DecQuintApp
 {
+    // Fazer um programa que leia os dados de n figuras;
+    // O programa mostrará a área das figuras
+    // na ordem que foram adicionadas.
+    // u can do it!:)
     class Program
     {
-        // Exercício desafio
-
         static void Main(string[] args)
         {
-            Products();
+            Console.WriteLine("Quantas formas desejas inserir?");
+            int n = int.Parse(Console.ReadLine());
+            List<Shape> formas = new List<Shape>();
+            for (int i = 0; i < n;)
+            {
+                
+                string option = "";
+                string colorOption = "";
+                option.ToUpper();
+                while ((option != "R" || option != "C") && i < n)
+                {
+
+                    Console.WriteLine("Escolha uma forma geométrica:\n" +
+                        "(R) - Retângulo | (C) - Círculo");
+                    option = Console.ReadLine().ToUpper();
+                    option.ToUpper();
+                    var cor = System.Drawing.Color.Black;
+                    if (option == "R")
+                    {
+                        Console.WriteLine($"Criando {i + 1}° forma das {n} pedidas");
+
+                        Console.Write("Altura: ");
+                        double altura = double.Parse(Console.ReadLine());
+                        Console.Write("Largura: ");
+                        double largura = double.Parse(Console.ReadLine());
+                        Console.Write("Escolha uma cor: (P) - Preto | (V) - Vermelho | (A) - Azul: ");
+                        colorOption = Console.ReadLine().ToUpper();
+                        colorOption.ToUpper();
+                        if (colorOption == "P" || colorOption == "p")
+                        {
+                            //cor = "Black";
+                            cor = System.Drawing.Color.Black;
+                        }
+                        else if (colorOption == "V" || colorOption == "v")
+                        {
+                            //cor = "Red";
+                            cor = System.Drawing.Color.Red;
+                        }
+                        else if (colorOption == "A" || colorOption == "a")
+                        {
+                            //cor = "Blue";
+                            cor = System.Drawing.Color.Blue;
+                        }
+                        //while ((colorOption != "P") || (colorOption != "V") || (colorOption != "A"))
+                        //{
+                        //    Console.Write("Escolha uma cor: (P) - Preto | (V) - Vermelho | (A) - Azul: ");
+                        //    colorOption = Console.ReadLine().ToUpper();
+                        //    colorOption.ToUpper();
+                        //    if (colorOption == "P" || colorOption == "p")
+                        //    {
+                        //        //cor = "Black";
+                        //        cor = System.Drawing.Color.Black;
+                        //    }
+                        //    else if (colorOption == "V" || colorOption == "v")
+                        //    {
+                        //        //cor = "Red";
+                        //        cor = System.Drawing.Color.Red;
+                        //    }
+                        //    else if (colorOption == "A" || colorOption == "a")
+                        //    {
+                        //        //cor = "Blue";
+                        //        cor = System.Drawing.Color.Black;
+                        //    }
+                        //}
+                        Shape reta = new Rectangule(largura, altura, cor);
+                        formas.Add(reta);
+                        i += 1;
+
+                    }
+                    else if(option == "C")
+                    {
+                        Console.WriteLine($"Criando {i + 1}° forma das {n} pedidas");
+
+                        Console.Write("Raio: ");
+                        double raio = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.Write("Escolha uma cor: (P) - Preto | (V) - Vermelho | (A) - Azul: ");
+                        colorOption = Console.ReadLine().ToUpper();
+                        colorOption.ToUpper();
+                        if (colorOption == "P" || colorOption == "p")
+                        {
+                            //cor = "Black";
+                            cor = System.Drawing.Color.Black;
+                        }
+                        else if (colorOption == "V" || colorOption == "v")
+                        {
+                            //cor = "Red";
+                            cor = System.Drawing.Color.Red;
+                        }
+                        else if (colorOption == "A" || colorOption == "a")
+                        {
+                            //cor = "Blue";
+                            cor = System.Drawing.Color.Blue;
+                        }
+                        //while (colorOption != "P" || colorOption != "V" || colorOption != "A")
+                        //{
+                        //    Console.Write("Escolha uma cor: (P) - Preto | (V) - Vermelho | (A) - Azul: ");
+                        //    colorOption = Console.ReadLine().ToUpper();
+                        //    colorOption.ToUpper();
+                        //    if (colorOption == "P")
+                        //    {
+                        //        //cor = "Black";
+                        //        cor = System.Drawing.Color.Black;
+                        //    }
+                        //    else if (colorOption == "V")
+                        //    {
+                        //        //cor = "Red";
+                        //        cor = System.Drawing.Color.Red;
+                        //    }
+                        //    else if (colorOption == "A")
+                        //    {
+                        //        //cor = "Blue";
+                        //        cor = System.Drawing.Color.Black;
+                        //    }
+                        //}
+                        Shape circ = new Circle(raio, cor);
+                        formas.Add(circ);
+                        i += 1;
+                    }
+                }
+                break;
+            }
+            Console.WriteLine("-----Formas Geométricas criadas-----");
+            int c = 0;
+
+            foreach (var f in formas)
+            {
+                
+                //Console.WriteLine(f);
+                if (f is Rectangule)
+                {
+                    Rectangule rectangule = f as Rectangule;
+                    Console.WriteLine($"\nForma {c + 1}#: Retângulo | Cor: {rectangule.color} | Altura: {rectangule.Height}cm | Largura: {rectangule.Width}cm | Área: {rectangule.Area().ToString("F2", CultureInfo.InvariantCulture)}cm²");
+                    c += 1;
+                }
+                if (f is Circle)
+                {
+                    Circle circle = f as Circle;
+                    Console.WriteLine($"\nForma {c + 1}#: Círculo | Cor: {circle.color} | Raio: {circle.Radius.ToString("F2", CultureInfo.InvariantCulture)}cm² | Área: {circle.Area().ToString("F2", CultureInfo.InvariantCulture)}cm²");
+                    c += 1;
+                }
+            }
+
+            //Shape reta = new Rectangule(4, 5);
+            //Shape circ = new Circle(6);
+
+            //Console.WriteLine($"Área do retângulo: {reta.Area().ToString("F2", CultureInfo.InvariantCulture)}");
+            //Console.WriteLine($"Área do círculo: {circ.Area().ToString("F2", CultureInfo.InvariantCulture)}");
+
         }
 
         static public void Products()
